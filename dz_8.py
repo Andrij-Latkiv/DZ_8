@@ -16,19 +16,33 @@ users = [
 #-----------поточний--тиждень------------------------------------------------------------------------------
 def week():
 
-    week_day = datetime.now()
-    period = timedelta(days=6)
-    delta = timedelta(days = 1)
-    week_end = week_day + period
-
     week_now = []
 
-    while week_day <= week_end:
-        week_now.append(week_day.date())
-        week_day += delta
-        
+    week_day = datetime.now()
+
+    period = timedelta(days=6)
+    delta = timedelta(days = 1)
+    delta_2 = timedelta(days = 2)
     
-    return week_now
+    if week_day.weekday() != 0:
+
+        week_end = week_day + period     
+
+        while week_day <= week_end:
+            week_now.append(week_day.date())
+            week_day += delta
+            
+        return week_now
+    else:
+
+        week_day = week_day - delta_2
+        week_end = week_day + period     
+
+        while week_day <= week_end:
+            week_now.append(week_day.date())
+            week_day += delta
+            
+        return week_now
 
 #------------------------------------------------------------------------------------------
 
